@@ -1,8 +1,8 @@
 const path = require('path');
 
 const people = `
-Name           |  NEUID   | Email                     | Slack handle           | github username
-Brett Ritter   | ???      | b.ritter@northeastern.edu | @Brett Ritter (He/Him) | swiftone
+Name             |   NEUID   | Email                      | Slack handle                | github username
+Hsiao-Ching Chen | 002749406 | chen.hsia@northeastern.edu | @Hsiao-Ching Chen (She/Her) | hsiaohcc01
 
 `.split('\n') // convert to array of lines
 .filter( line => !!line.replace(/\s/g,'' )); // Remove empty lines
