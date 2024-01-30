@@ -1,0 +1,7 @@
+.cats-list{
+    display: flex;
+    padding: 3rem;
+    flex-direction: column;
+    list-style-type: "\1F431";
+    border: 5px solid rgb(199, 81, 17);
+}
