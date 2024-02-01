@@ -9,19 +9,20 @@ function compare(word, guess) { // DO NOT MODIFY
     /* 1. Convert words to lowercase */
     word = word.toLowerCase();
     guess = guess.toLowerCase();
-    const uniqueLetters = new Set(word);
     let count = 0;
 
+    /* Transform the guess into an array for removing matched characters */
+    let guessArray = Array.from(guess);
+
     /* Compare uniqueLetters(word) and letter(guess) */
-    for (let letter of guess) {
-        /* If match then count+1 and delete the word in case duplicates */
-        if (uniqueLetters.has(letter)) {
+    for (let letter of word) {
+        let index = guessArray.indexOf(letter);
+        if (index !== -1) {
             count++;
-            uniqueLetters.delete(letter);
+            /* Delete matched letters from guessArray to handle duplicates accurately */
+            guessArray.splice(index, 1);
         }
     }
 
-    /* Log the total count of matching letters
-    console.log("Total match count: " + matchCount);*/
     return count;
-  }
+}
