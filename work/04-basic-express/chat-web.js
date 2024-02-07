@@ -6,12 +6,12 @@ const chatWeb = {
   // chatPage() returns the HTML for the page
   // it calls the other methods to generate the HTML for different sections
   chatPage: function(chat) {
-    // Fill in/modify anything below!
     return `
       <!doctype html>
       <html>
         <head>
           <title>Chat</title>
+          <link rel="stylesheet" href="/style.css">
         </head>
         <body>
           <div id="chat-app">
@@ -26,30 +26,45 @@ const chatWeb = {
 
   getMessageList: function(chat) {
     return `<ol class="messages">` +
-      // Fill in
-      // Generate the HTML for the list of messages
+      Object.values(chat.messages).map(message => `
+    <li>
+      <div class="message">
+        <div class="sender-info">
+          <img class="avatar" alt="avatar of amit" src="images/avatar-${message.sender}.jpg"/>
+          <span class="username">${message.sender}</span>
+        </div>
+        <div class="sender-message"> 
+          <p class="message-text">${message.text}</p>
+        </div>
+      </div>
+    </li>
+  `).join('') +
       `</ol>`;
   },
+
   getUserList: function(chat) {
-    // This is a bit of a complex structure
-    // Lookup Object.values() in MDN
-    // .map() generates a new array based on calling the callback
-    // on each element of the array
-    // So this .map() converts the user names to an array of HTML
-    // and .join() converts the array of HTML into a single HTML string
     return `<ul class="users">` +
-    Object.values(chat.users).map( user => `
-      <li>
-        <div class="user">
-          <span class="username">${user}</span>
-        </div>
-      </li>
-    `).join('') +
-    `</ul>`;
+      Object.values(chat.users).map(user => `
+        <li>
+          <div class="user">
+            <span class="username">${user}</span>
+          </div>
+        </li>
+      `).join('') +
+      `</ul>`;
   },
+
   getOutgoingSection: function() {
-    // Fill in
-    // Generate the HTML for a form to send a message
+    return `
+    <div class="outgoing">
+        <form class="message-area" action="/chat" method="POST">
+          <input type="hidden" name="username" value="meow">
+          <div class="text"><input name="text" class="to-send" placeholder="Enter message to send"/></div>
+          <div class="submit"><button type="submit">Send</button></div>
+        </form>
+      </div>
+    `
   }
 };
+
 module.exports = chatWeb;
