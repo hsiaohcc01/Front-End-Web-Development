@@ -1,0 +1,74 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ECF0F1;
+}
+
+#user-app {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.login form, .store form {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    background-color: #4A90E2;
+    color: white;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 8px;
+    height: 200px;
+}
+
+.logout {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 100;
+}
+
+.logout-btn, .form-btn {
+    border: 0;
+    background-color: #A3D1FF;
+    color: #2C3E50;
+    padding: 0.75rem;
+    width: 120px;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.logout-btn:hover, .form-btn:hover {
+    background-color: #7BACD4;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.store-info {
+    font-weight: bold;
+    padding: 2rem;
+    background-color:#34495E;
+    color: white;
+    border-radius: 8px;
+}
+
+.login input, .store input {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 20px;
+}
