@@ -30,10 +30,7 @@ function renderCart(state, appEl) {
     const cartItemsHTML = generateCartItemsHTML(state.cartItems);
     const totalPriceHTML = state.totalPrice ? `Total Cost: $${Math.max(0, state.totalPrice).toFixed(2)}` : 'Total Cost: $0.00';
 
-
-    console.warn("state.totalPrice:" + Math.max(0, state.totalPrice).toFixed(2) )
-
-    if (Math.max(0, state.totalPrice).toFixed(2) === '0.00' ) {
+    if (Math.max(0, state.totalPrice).toFixed(2) === '0.00') {
         appEl.innerHTML = `
         <ul class="products">${productsHTML}</ul>  
         <button class="hide-cart">Hide Cart</button>
