@@ -35,8 +35,9 @@ function renderProducts(state, appEl) {
 function renderCart(state, appEl) {
   var productsHTML = generateProductsHTML(state.products);
   var cartItemsHTML = generateCartItemsHTML(state.cartItems);
-  var totalPriceHTML = state.totalPrice ? "Total Cost: $".concat(state.totalPrice.toFixed(2)) : 'Total Cost: $0.00';
-  if (state.totalPrice === 0) {
+  var totalPriceHTML = state.totalPrice ? "Total Cost: $".concat(Math.max(0, state.totalPrice).toFixed(2)) : 'Total Cost: $0.00';
+  console.warn("state.totalPrice:" + Math.max(0, state.totalPrice).toFixed(2));
+  if (Math.max(0, state.totalPrice).toFixed(2) === '0.00') {
     appEl.innerHTML = "\n        <ul class=\"products\">".concat(productsHTML, "</ul>  \n        <button class=\"hide-cart\">Hide Cart</button>\n        <div class=\"item\">Nothing in the cart</div>\n        <span class=\"total\">").concat(totalPriceHTML, "</span>\n        <ul class=\"carts\">").concat(cartItemsHTML, "</ul>\n        <button class=\"checkout\">Checkout</button>\n    ");
   } else {
     appEl.innerHTML = "\n        <ul class=\"products\">".concat(productsHTML, "</ul>  \n        <div class=\"center-container\">\n          <p>Shopping Cart</p>\n        </div>\n        <button class=\"hide-cart\">Hide Cart</button>\n        <span class=\"total\">").concat(totalPriceHTML, "</span>\n        <ul class=\"carts\">").concat(cartItemsHTML, "</ul>\n        <button class=\"checkout\">Checkout</button>\n      ");

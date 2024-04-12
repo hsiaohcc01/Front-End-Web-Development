@@ -28,9 +28,9 @@ function renderProducts(state, appEl) {
 function renderCart(state, appEl) {
     const productsHTML = generateProductsHTML(state.products);
     const cartItemsHTML = generateCartItemsHTML(state.cartItems);
-    const totalPriceHTML = state.totalPrice ? `Total Cost: $${state.totalPrice.toFixed(2)}` : 'Total Cost: $0.00';
+    const totalPriceHTML = state.totalPrice ? `Total Cost: $${Math.max(0, state.totalPrice).toFixed(2)}` : 'Total Cost: $0.00';
 
-    if (state.totalPrice === 0){
+    if (Math.max(0, state.totalPrice).toFixed(2) === '0.00') {
         appEl.innerHTML = `
         <ul class="products">${productsHTML}</ul>  
         <button class="hide-cart">Hide Cart</button>
@@ -39,7 +39,7 @@ function renderCart(state, appEl) {
         <ul class="carts">${cartItemsHTML}</ul>
         <button class="checkout">Checkout</button>
     `;
-    }else{
+    } else {
         appEl.innerHTML = `
         <ul class="products">${productsHTML}</ul>  
         <div class="center-container">
